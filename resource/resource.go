@@ -19,10 +19,17 @@
 // and stylesheets.
 package resource
 
-// When changing files included here, you may add the `-debug` flag, which will
-// avoid embedding any files (but instead passes them through from disk). This
-// avoids having to recompile before testing changes.
-
+// If you add any files to the ui folder, you'll need to generate and make build
+// for the new files to appear.
+//
+// If you're planning on doing any development of the ui, add a -debug flag
+// before the -pkg flag in the go:generate command below. By doing so, the files
+// will become references to your local ones you'll be able to edit them live.
+// Of course, don't forget to run go generate and make build afterwards. Be
+// sure to remove this flag and go generate before creating a PR. Also, make
+// sure you clear the page cache when debugging or you might not see the
+// changes.
 //go:generate go-bindata -pkg resource -mode 0644 -modtime 1400000000 -o ./embedded.go ./ui/...
+
 //go:generate gofmt -s -w embedded.go
 //go:generate goimports -w embedded.go
