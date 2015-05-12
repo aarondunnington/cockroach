@@ -842,6 +842,7 @@ func marshalValue(v interface{}) ([]byte, error) {
 	return nil, fmt.Errorf("unable to marshal value: %T", v)
 }
 
+// Runner only exports the Run method on a batch of operations.
 type Runner interface {
 	Run(b *Batch) error
 }
