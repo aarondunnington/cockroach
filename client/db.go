@@ -842,11 +842,11 @@ func marshalValue(v interface{}) ([]byte, error) {
 	return nil, fmt.Errorf("unable to marshal value: %T", v)
 }
 
-type runner interface {
+type Runner interface {
 	Run(b *Batch) error
 }
 
-func runOne(r runner, b *Batch) Result {
+func runOne(r Runner, b *Batch) Result {
 	if err := r.Run(b); err != nil {
 		return Result{Err: err}
 	}
